@@ -1,0 +1,12 @@
+Aspect,C++,Java
+Language Type,C++ is a compiled, general-purpose language that supports both OOP and procedural programming.,Java is a purely object-oriented, platform-independent language.
+Memory Management,Manual memory management using new and delete.,Automatic garbage collection; no need for explicit delete.
+Access Specifiers,Supports private, public, and protected.,Supports private, public, protected, and default (package-private).
+Inheritance,Supports multiple inheritance via classes and virtual inheritance.,Only single inheritance is allowed (multiple inheritance via interfaces).
+Polymorphism,Polymorphism requires explicitly declaring methods as virtual.,All methods are virtual by default unless marked final or static.
+Abstract Classes,Abstract classes can have both pure virtual methods and implemented methods.,Abstract classes must be declared with abstract and can have implemented methods.
+Interfaces,Interfaces aren’t a separate construct; can be achieved via abstract classes.,Interfaces are a distinct construct (interface keyword) and support multiple inheritance.
+Pointers,C++ supports pointers, allowing low-level memory manipulation.,Java does not support pointers directly (handles memory safely).
+Templates vs. Generics,C++ has templates for generic programming, providing compile-time type safety.,Java has generics, which are implemented at runtime with type erasure.
+Operator Overloading,C++ supports operator overloading.,Java does not support operator overloading.
+Destructor,C++ supports destructors for cleanup (~ClassName()).,Java relies on finalize() (deprecated) and garbage collection.
