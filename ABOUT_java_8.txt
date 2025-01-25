@@ -1,0 +1,211 @@
+Java 8, released in March 2014, introduced several groundbreaking features that changed the way Java programming is done. Here’s a summary of the key new features:
+
+1. Lambda Expressions
+	•	What it is: A concise way to represent an anonymous function (method without a name).
+	•	Purpose: Simplifies writing code for functional programming and enables behavior to be treated as data.
+
+Example:
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+
+        // Using lambda expression
+        list.forEach(item -> System.out.println(item));
+    }
+}
+
+2. Functional Interfaces
+	•	What it is: An interface with only one abstract method (used for lambda expressions).
+	•	Purpose: Enables passing behavior as a parameter.
+
+Example:
+
+@FunctionalInterface
+interface MyInterface {
+    void sayHello();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Lambda for functional interface
+        MyInterface greet = () -> System.out.println("Hello, World!");
+        greet.sayHello();
+    }
+}
+
+Key Functional Interfaces in Java 8:
+	•	Predicate<T>: Tests a condition.
+	•	Consumer<T>: Performs an action.
+	•	Function<T, R>: Transforms data.
+	•	Supplier<T>: Supplies a value.
+
+3. Streams API
+	•	What it is: A way to process collections of data in a functional style (like filtering, mapping, and reducing data).
+	•	Purpose: Simplifies working with data streams and collections.
+
+Example:
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Filter even numbers and print
+        numbers.stream()
+               .filter(n -> n % 2 == 0)
+               .forEach(System.out::println);
+    }
+}
+
+4. Default Methods in Interfaces
+	•	What it is: Allows interfaces to have method implementations with the default keyword.
+	•	Purpose: Supports backward compatibility without breaking existing code.
+
+Example:
+
+interface Vehicle {
+    default void start() {
+        System.out.println("Starting vehicle...");
+    }
+}
+
+class Car implements Vehicle {}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.start(); // Default method from Vehicle interface
+    }
+}
+
+5. Optional Class
+	•	What it is: A container object to handle null values and avoid NullPointerException.
+	•	Purpose: Encourages safer and cleaner code when dealing with nulls.
+
+Example:
+
+import java.util.Optional;
+
+public class Main {
+    public static void main(String[] args) {
+        Optional<String> optional = Optional.ofNullable("Hello, Java 8!");
+        optional.ifPresent(System.out::println); // Prints if value is present
+    }
+}
+
+6. New Date and Time API (java.time package)
+	•	What it is: A modern, thread-safe, and immutable API for date and time handling.
+	•	Purpose: Replaces the outdated java.util.Date and java.util.Calendar.
+
+Example:
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+
+public class Main {
+    public static void main(String[] args) {
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        LocalDateTime dateTime = LocalDateTime.now();
+
+        System.out.println("Date: " + date);
+        System.out.println("Time: " + time);
+        System.out.println("DateTime: " + dateTime);
+    }
+}
+
+7. Method References
+	•	What it is: A shorthand notation for a lambda expression that executes a method.
+	•	Purpose: Makes the code cleaner and easier to read.
+
+Example:
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] fruits = {"Apple", "Banana", "Cherry"};
+
+        // Method reference to a static method
+        Arrays.sort(fruits, String::compareToIgnoreCase);
+
+        // Print sorted fruits
+        Arrays.stream(fruits).forEach(System.out::println);
+    }
+}
+
+8. Collectors Class
+	•	What it is: A utility class in the Streams API for reducing or grouping data.
+	•	Purpose: Simplifies data collection operations from streams.
+
+Example:
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> items = Arrays.asList("apple", "banana", "apple", "cherry");
+
+        // Collect distinct items into a list
+        List<String> distinctItems = items.stream()
+                                          .distinct()
+                                          .collect(Collectors.toList());
+
+        System.out.println(distinctItems);
+    }
+}
+
+9. Static Methods in Interfaces
+	•	What it is: Allows interfaces to have static utility methods.
+	•	Purpose: Adds functionality to interfaces without requiring implementation classes.
+
+Example:
+
+interface Utility {
+    static void printMessage(String message) {
+        System.out.println(message);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Utility.printMessage("Static method in an interface!");
+    }
+}
+
+10. Parallel Streams
+	•	What it is: Processes streams in parallel using multiple threads for better performance.
+	•	Purpose: Improves performance for large data processing.
+
+Example:
+
+import java.util.stream.IntStream;
+
+public class Main {
+    public static void main(String[] args) {
+        // Parallel stream for faster processing
+        int sum = IntStream.rangeClosed(1, 1000)
+                           .parallel()
+                           .sum();
+
+        System.out.println("Sum: " + sum);
+    }
+}
+
+Key Highlights of Java 8:
+	•	Functional programming with lambdas and streams.
+	•	Enhanced interface design with default and static methods.
+	•	Modernized date and time API.
+	•	Improved null safety with the Optional class.
+
