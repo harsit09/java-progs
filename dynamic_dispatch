@@ -1,0 +1,61 @@
+Dynamic Method Dispatch in Java
+
+Definition:
+Dynamic Method Dispatch is the process in Java where a call to an overridden method is resolved at runtime rather than at compile time. This enables runtime polymorphism. It works when a superclass reference is used to refer to a subclass object. At runtime, the method of the subclass (not the superclass) is invoked, depending on the object being referred to.
+
+Key Points:
+	1.	Dynamic Binding: The method that is executed is determined at runtime.
+	2.	Overridden Methods: It works only with methods that are overridden (methods with the same name, return type, and parameters in both superclass and subclass).
+	3.	Superclass Reference: A superclass reference variable can hold a reference to a subclass object.
+
+Example:
+
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Superclass reference referring to a subclass object
+        Animal myAnimal;
+
+        // Dog object
+        myAnimal = new Dog();
+        myAnimal.sound();  // Output: Dog barks
+
+        // Cat object
+        myAnimal = new Cat();
+        myAnimal.sound();  // Output: Cat meows
+    }
+}
+
+Explanation:
+	1.	Superclass Reference (Animal myAnimal):
+The Animal reference can point to objects of its subclasses (Dog or Cat).
+	2.	Overridden Methods:
+Both Dog and Cat override the sound() method of the Animal class.
+	3.	Dynamic Binding at Runtime:
+At runtime, the JVM determines the actual object being referred to by the myAnimal reference. It calls the appropriate overridden method (sound() in Dog or Cat).
+
+Benefits of Dynamic Method Dispatch:
+	1.	Enables runtime polymorphism.
+	2.	Helps in achieving flexible and reusable code.
+	3.	Makes programs more extensible by handling objects of different types uniformly.
+
+Would you like to explore more on polymorphism or inheritance concepts? Let me know!
